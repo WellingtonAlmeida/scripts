@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Script para download dos JDK Adoptium
+
+export JDK_HOME="/usr/local/java"
+versao=$1
+
+install() {
+   echo "- Realizando download..."
+   wget https://api.adoptium.net/v3/binary/latest/$versao/ga/linux/x64/jdk/hotspot/normal/eclipse -O /tmp/jdk$versao.tar.gz
+   echo "- Descompactando arquivos..."
+   tar xf /tmp/jdk$versao.tar.gz -C $JDK_HOME
+   echo "- Instalação concluída."
+}
+
+if [ $# == 0 ]; then
+   echo "Informe uma versão LST para instalação."
+else
+   echo "Instalando JDK $versao LTS"
+   install $versao
+fi
