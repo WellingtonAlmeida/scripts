@@ -1,0 +1,15 @@
+#!/bin/bash
+
+BACKUP_HOME=/run/media/wellington/backup
+
+backup_folder() {
+    SOURCE_FOLDER="$1"
+    TARGET_FOLDER="$2"
+    rsync -av --delete $SOURCE_FOLDER $BACKUP_HOME
+}
+
+backup_folder "$HOME/second-brain" "second-brain"
+backup_folder "$HOME/ProgramasRFB" "ProgramasRFB"
+backup_folder "$HOME/wallet" "wallet"
+backup_folder "$HOME/obsidian" "obsidian"
+#backup_folder "$HOME/MEGA" "MEGA"
